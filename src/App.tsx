@@ -1,12 +1,17 @@
-import { AppRouter } from '@app/AppRouter';
-import React from 'react';
-import './less/index.less';
-
+import { AppRoutes } from '@app/AppRoutes'
+import { configureStore } from '@app/redux/store'
+import React from 'react'
+import { Provider } from 'react-redux'
+import './less/index.less'
 
 const Component = () => {
-  return (
-    <AppRouter/>
-  );
-};
+  const store = configureStore()
 
-export const App = React.memo(Component);
+  return (
+    <Provider store={store}>
+      <AppRoutes />
+    </Provider>
+  )
+}
+
+export const App = React.memo(Component)

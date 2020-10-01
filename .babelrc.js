@@ -5,11 +5,11 @@ module.exports = {
       {
         // used build-ins based on targets -> .browserslistrc
         'useBuiltIns': 'usage',
-        'corejs': 3,
+        'corejs': 3
       }
     ],
     '@babel/preset-react',
-    '@babel/preset-typescript',
+    '@babel/preset-typescript'
   ],
   'plugins': [
     // Stage 0
@@ -36,4 +36,4 @@ module.exports = {
     '@babel/plugin-proposal-class-properties',
     '@babel/plugin-proposal-json-strings'
   ]
-};
+}

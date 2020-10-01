@@ -1,38 +1,36 @@
-import * as express from 'express';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
-import path from 'path';
-import TerserPlugin from 'terser-webpack-plugin';
-import webpack from 'webpack';
+import * as express from 'express'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin'
+import path from 'path'
+import TerserPlugin from 'terser-webpack-plugin'
+import webpack from 'webpack'
 
+const NODE_ENV = process.env.NODE_ENV || 'development'
+const isProduction = NODE_ENV === 'production'
 
-const NODE_ENV = process.env.NODE_ENV || 'development';
-const isProduction = NODE_ENV === 'production';
-
-const entryPath = path.join(__dirname, 'src');
-const outputPath = path.join(__dirname, 'build');
+const entryPath = path.join(__dirname, 'src')
+const outputPath = path.join(__dirname, 'build')
 
 const plugins = [
   new webpack.DefinePlugin({
-    'process.env.NODE_ENV': JSON.stringify(NODE_ENV),
+    'process.env.NODE_ENV': JSON.stringify(NODE_ENV)
   }),
   new MiniCssExtractPlugin({
     filename: 'css/[name].css',
-    chunkFilename: 'css/[name].css',
-  }),
-];
-
+    chunkFilename: 'css/[name].css'
+  })
+]
 
 const webpackConfig: webpack.Configuration = {
   devtool: isProduction ? false : 'cheap-source-map',
 
   entry: {
-    app: `${entryPath}/App.tsx`,
+    app: `${entryPath}/App.tsx`
   },
 
   externals: {
     'react': 'React',
-    'react-dom': 'ReactDOM',
+    'react-dom': 'ReactDOM'
   },
 
   mode: isProduction ? 'production' : 'development',
@@ -50,8 +48,8 @@ const webpackConfig: webpack.Configuration = {
         use: [
           MiniCssExtractPlugin.loader,
           'css-loader',
-          'less-loader',
-        ],
+          'less-loader'
+        ]
       },
       {
         test: /\.(gif|png|jpe?g|svg)$/i,
@@ -60,8 +58,8 @@ const webpackConfig: webpack.Configuration = {
             loader: 'url-loader',
             options: {
               limit: 8192
-            },
-          }],
+            }
+          }]
       },
       {
         test: /\.ico$/,
@@ -73,8 +71,8 @@ const webpackConfig: webpack.Configuration = {
         options: {
           outputPath: 'fonts/'
         }
-      },
-    ],
+      }
+    ]
   },
 
   optimization: {
@@ -85,14 +83,14 @@ const webpackConfig: webpack.Configuration = {
         terserOptions: {
           output: {
             beautify: false,
-            comments: false,
+            comments: false
           }
         },
         extractComments: false,
         sourceMap: false
       })
     ],
-    noEmitOnErrors: true,
+    noEmitOnErrors: true
   },
 
   output: {
@@ -100,17 +98,17 @@ const webpackConfig: webpack.Configuration = {
     filename: 'js/[name].js',
     publicPath: '/',
     library: '[name]',
-    libraryTarget: 'var',
+    libraryTarget: 'var'
   },
 
   plugins: plugins,
 
   resolve: {
     alias: {
-      '@app': path.join(__dirname, 'src'),
+      '@app': path.join(__dirname, 'src')
     },
     modules: ['node_modules'],
-    extensions: ['.js', '.ts', '.tsx'],
+    extensions: ['.js', '.ts', '.tsx']
   },
 
   resolveLoader: {
@@ -121,9 +119,9 @@ const webpackConfig: webpack.Configuration = {
 
   devServer: {
     disableHostCheck: true,
-    before(app: express.Application) {
-      app.use('/js/react.js', express.static(require.resolve('react/umd/react.development')));
-      app.use('/js/react-dom.js', express.static(require.resolve('react-dom/umd/react-dom.development')));
+    before (app: express.Application) {
+      app.use('/js/react.js', express.static(require.resolve('react/umd/react.development')))
+      app.use('/js/react-dom.js', express.static(require.resolve('react-dom/umd/react-dom.development')))
     },
 
     host: '0.0.0.0',
@@ -145,8 +143,8 @@ const webpackConfig: webpack.Configuration = {
       modules: false,
       timings: false,
       version: false
-    },
+    }
   }
-};
+}
 
-export default webpackConfig;
+export default webpackConfig
