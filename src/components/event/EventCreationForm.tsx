@@ -1,3 +1,4 @@
+import { Radio } from '@app/components/base/custom/Radio'
 import { Form } from '@app/components/base/Form'
 import { InputText } from '@app/components/base/InputText'
 import { Textarea } from '@app/components/base/Textarea'
@@ -56,6 +57,18 @@ const Component: FC<Props> = ({ formData, onChange, onSubmit }) => {
               value={formData.category_id}
               onChange={(category_id) => onChange({ category_id })}
             />
+          </FormField>
+
+          <FormField title={l10n.getText('field.paid_event')}>
+            <div className="form-radio-holder">
+              <Radio checked={!formData.paid_event} onChange={() => onChange({ paid_event: false })}>
+                {l10n.getText('field.paid_event.FREE_EVENT')}
+              </Radio>
+
+              <Radio checked={formData.paid_event} onChange={() => onChange({ paid_event: true })}>
+                {l10n.getText('field.paid_event.PAID_EVENT')}
+              </Radio>
+            </div>
           </FormField>
         </div>
       </div>

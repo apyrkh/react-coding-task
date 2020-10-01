@@ -6,6 +6,9 @@
   "field.description": "Description",
   "field.description.placeholder": "Write about your event, be creative",
   "field.description.max_length": "Max length is {{0}} characters",
+  "field.paid_event": "Payment",
+  "field.paid_event.FREE_EVENT": "Free event",
+  "field.paid_event.PAID_EVENT": "Paid event",
   "field.title": "Title",
   "field.title.placeholder": "Make it short and clear",
 
