@@ -1,8 +1,6 @@
 @custom-radio-size: 16px;
-@custom-radio-box-shadow: 0 0 0 1px rgba(@blue, 0.4);
 @custom-radio-active-color: @blue;
-@custom-radio-inactive-color: @light-grey;
-@custom-radio-disabled-color: @dark-grey;
+@custom-radio-inactive-color: @dark-grey;
 
 .custom-radio {
   font-size: 14px;
@@ -18,7 +16,6 @@
       margin-right: 0;
     }
   }
-
 
   &__input,
   &__checkmark {
@@ -56,8 +53,6 @@
   }
 
   &__input:checked ~ &__checkmark {
-    border-color: @custom-radio-active-color;
-
     &:before {
       display: flex;
       align-items: center;
@@ -66,28 +61,15 @@
     }
   }
 
+  &__input:hover ~ &__checkmark {
+    border-color: @custom-radio-active-color;
+  }
+
   &__input:focus ~ &__checkmark {
-    box-shadow: @custom-radio-box-shadow;
+    border-color: @custom-radio-active-color;
   }
 
   &__input:focus:not(:checked) ~ &__checkmark {
     border-color: @custom-radio-active-color;
-  }
-
-  &__input:not(:disabled):active ~ &__checkmark {
-  }
-
-  &__input:not(:disabled):not(:checked):hover ~ &__checkmark {
-    background-color: rgba(@custom-radio-inactive-color, 0.1);
-  }
-
-  // = DISABLED =
-  &__input[disabled],
-  &__input:disabled ~ &__checkmark {
-    border-color: @custom-radio-disabled-color;
-  }
-
-  &__input:checked:disabled ~ &__checkmark {
-    background-color: @custom-radio-disabled-color;
   }
 }
