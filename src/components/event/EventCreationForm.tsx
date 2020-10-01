@@ -1,6 +1,7 @@
 import { Form } from '@app/components/base/Form'
 import { InputText } from '@app/components/base/InputText'
 import { Textarea } from '@app/components/base/Textarea'
+import { CategorySelect } from '@app/components/event/CategorySelect'
 import { FormField } from '@app/components/form/FormField'
 import { useAppContext } from '@app/hooks/useAppContext'
 import EventCreationFormModel, { DESCRIPTION_MAX_LENGTH } from '@app/interfaces/EventCreationFormModel'
@@ -31,7 +32,7 @@ const Component: FC<Props> = ({ formData, onChange, onSubmit }) => {
             />
           </FormField>
 
-          <FormField title={l10n.getText('field.description')}>
+          <FormField title={l10n.getText('field.description')} required>
             <Textarea className="form-input"
               placeholder={l10n.getText('field.description.placeholder')}
               rows={5}
@@ -48,6 +49,13 @@ const Component: FC<Props> = ({ formData, onChange, onSubmit }) => {
                 {formData.description.length}/{DESCRIPTION_MAX_LENGTH}
               </span>
             </div>
+          </FormField>
+
+          <FormField title={l10n.getText('field.category')}>
+            <CategorySelect className="form-input"
+              value={formData.category_id}
+              onChange={(category_id) => onChange({ category_id })}
+            />
           </FormField>
         </div>
       </div>

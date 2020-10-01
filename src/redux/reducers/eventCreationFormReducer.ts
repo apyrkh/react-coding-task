@@ -3,7 +3,14 @@ import { EventCreationFormAction, EventCreationFormActionTypes } from '@app/redu
 
 const initialState: EventCreationFormModel = {
   title: '',
-  description: ''
+  description: '',
+  category_id: null,
+  paid_event: false,
+  event_fee: 0,
+  reward: null,
+  date: null,
+  duration: null,
+  coordinator: null
 }
 
 export const eventCreationFormReducer = (state: EventCreationFormModel = initialState, action: EventCreationFormAction): EventCreationFormModel => {

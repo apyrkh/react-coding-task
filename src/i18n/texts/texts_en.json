@@ -1,6 +1,8 @@
 {
   "btn.publish_event": "Publish event",
 
+  "field.category": "Category",
+  "field.category.placeholder": "Select category",
   "field.description": "Description",
   "field.description.placeholder": "Write about your event, be creative",
   "field.description.max_length": "Max length is {{0}} characters",
