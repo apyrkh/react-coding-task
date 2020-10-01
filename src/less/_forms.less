@@ -11,6 +11,12 @@
   color: @form-input-placeholder-color;
 }
 
+select.with-placeholder {
+  &:not(:focus):not(:active) {
+    color: @form-input-placeholder-color
+  }
+}
+
 textarea {
   resize: vertical;
   min-height: 60px;
