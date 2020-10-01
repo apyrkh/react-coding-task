@@ -1,0 +1,13 @@
+{
+  "btn.publish_event": "Publish event",
+
+  "field.description": "Description",
+  "field.description.placeholder": "Write about your event, be creative",
+  "field.description.max_length": "Max length is {{0}} characters",
+  "field.title": "Title",
+  "field.title.placeholder": "Make it short and clear",
+
+  "label.about": "About",
+  "label.coordinator": "Coordinator",
+  "label.when": "When"
+}

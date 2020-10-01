@@ -1,4 +1,5 @@
 import { AppRoutes } from '@app/AppRoutes'
+import { AppContextProvider } from '@app/components/AppContextProvider'
 import { configureStore } from '@app/redux/store'
 import React from 'react'
 import { Provider } from 'react-redux'
@@ -9,7 +10,9 @@ const Component = () => {
 
   return (
     <Provider store={store}>
-      <AppRoutes />
+      <AppContextProvider>
+        <AppRoutes />
+      </AppContextProvider>
     </Provider>
   )
 }
