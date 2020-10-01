@@ -1,0 +1,88 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+
+html {
+  height: 100%;
+}
+
+body {
+  font-family: @font-family;
+  background: @body-bg;
+  min-height: 100%;
+}
+
+.container {
+  max-width: 100%;
+  padding-right: @gutter / 2;
+  padding-left: @gutter / 2;
+  margin-right: auto;
+  margin-left: auto;
+
+  @media (min-width: @screen-sm) {
+    width: @container-sm;
+  }
+  @media (min-width: @screen-md) {
+    width: @container-md;
+  }
+  @media (min-width: @screen-lg) {
+    width: @container-lg;
+  }
+}
+
+
+@header-bg: @blue;
+@header-color: @white;
+@header-top-line-bg: @dark-blue;
+
+.header {
+  font-size: 32px;
+  color: @header-color;
+  background-color: @header-bg;
+  box-shadow: 0px 0px 4px @header-top-line-bg;
+
+  &__top-line {
+    height: 10px;
+    background-color: @header-top-line-bg;
+  }
+
+  &__main-line {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    padding-left: 30px;
+  }
+}
+
+
+@panel-head-color: @dark-blue;
+@panel-head-bg: @white;
+@panel-head-font-size: 24px;
+@panel-head-font-weight: bold;
+
+.panel {
+  padding: 10px 40px;
+  box-shadow: 0px 0px 4px @dark-grey;
+  background: @panel-head-bg;
+
+  &__head {
+    color: @panel-head-color;
+    font-size: @panel-head-font-size;
+    font-weight: @panel-head-font-weight;
+
+    padding: 5px 0;
+    margin-bottom: 10px;
+    border-bottom: 1px solid @light-grey;
+  }
+
+  &__body {
+    padding: 10px 0;
+  }
+}

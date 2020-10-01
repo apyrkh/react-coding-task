@@ -1,7 +1,7 @@
 import { EventCreationFormContainer } from '@app/components/event/EventCreationFormContainer'
 import EventCreationFormModel from '@app/interfaces/EventCreationFormModel'
+import { EventCreationHeader } from '@app/pages/event/EventCreationHeader'
 import React, { FC } from 'react'
-import { Link } from 'react-router-dom'
 
 interface Props {
   formData: EventCreationFormModel
@@ -10,11 +10,12 @@ interface Props {
 
 const Component: FC = () => {
   return (
-    <div>
-      <Link to="/">Home</Link>
-      <br />
+    <div className="event-creation-page">
+      <EventCreationHeader />
 
-      <EventCreationFormContainer />
+      <div className="container">
+        <EventCreationFormContainer />
+      </div>
     </div>
   )
 }

@@ -2,7 +2,8 @@ import EventCreationFormModel from '@app/interfaces/EventCreationFormModel'
 import { EventCreationFormAction, EventCreationFormActionTypes } from '@app/redux/actions/eventCreationFormAction'
 
 const initialState: EventCreationFormModel = {
-  title: ''
+  title: '',
+  description: ''
 }
 
 export const eventCreationFormReducer = (state: EventCreationFormModel = initialState, action: EventCreationFormAction): EventCreationFormModel => {

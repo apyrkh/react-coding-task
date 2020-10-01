@@ -1,0 +1,29 @@
+.with-in-transition(@properties) {
+  transition: @properties .25s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.with-out-transition(@properties) {
+  transition: @properties .2s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.button-bg(@color, @bg) {
+  color: @color;
+  background: @bg;
+  border: 2px solid rgba(0, 0, 0, 0);
+  .with-out-transition(~"color, background-color");
+
+  &:hover {
+    background: darken(@bg, 7%);
+    .with-in-transition(~"color, background-color");
+  }
+
+  &:active {
+    background: darken(@bg, 15%);
+    .with-in-transition(~"color, background-color");
+  }
+
+  &:focus {
+    border-color: darken(@bg, 15%);;
+    .with-in-transition(~"border-color");
+  }
+}
