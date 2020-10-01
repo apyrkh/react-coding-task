@@ -5,7 +5,7 @@ import thunkMiddleware from 'redux-thunk'
 
 const isProduction = process.env.NODE_ENV === 'production'
 
-export function configureStore (extraArguments?: any) {
+export const configureStore = (extraArguments?: any) => {
   const thinkMiddleware = thunkMiddleware.withExtraArgument(extraArguments)
   const middleware = isProduction ?
     applyMiddleware(thinkMiddleware) :

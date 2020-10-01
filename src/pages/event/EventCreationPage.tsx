@@ -1,26 +1,22 @@
-import EventCreationForm from '@app/interfaces/EventCreationForm'
-import GlobalState from '@app/interfaces/GlobalState'
-import React from 'react'
-import { connect } from 'react-redux'
+import { EventCreationFormContainer } from '@app/components/event/EventCreationFormContainer'
+import EventCreationFormModel from '@app/interfaces/EventCreationFormModel'
+import React, { FC } from 'react'
 import { Link } from 'react-router-dom'
 
 interface Props {
-  formData: EventCreationForm
+  formData: EventCreationFormModel
+  onChange: (formData: Partial<EventCreationFormModel>) => void
 }
 
-const Component = (props: Props) => {
+const Component: FC = () => {
   return (
     <div>
       <Link to="/">Home</Link>
       <br />
 
-      Event creation page
+      <EventCreationFormContainer />
     </div>
   )
 }
 
-const mapStateToProps = (state: GlobalState, ownProps: any) => ({
-  formData: state.eventCreationForm
-})
-
-export const EventCreationPage = connect(mapStateToProps)(Component)
+export const EventCreationPage = Component

@@ -10,7 +10,8 @@
     "prebuild": "rimraf build && mkdirp build && ncp index.html build/index.html && ncp static build/static",
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.ts --progress --profile --colors --display-entrypoints=false --display-chunks=false --hide-modules",
     "dev": "cross-env NODE_ENV=development webpack-dev-server",
-    "start": "cross-env NODE_ENV=production node server.js"
+    "start": "cross-env NODE_ENV=production node server.js",
+    "test": "tsc --noEmit"
   },
   "dependencies": {
     "axios": "0.20.0",
