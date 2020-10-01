@@ -32,9 +32,19 @@ const Component: FC<Props> = ({ formData, onChange, onSubmit }) => {
             <Textarea className="form-input"
               placeholder="Write about your event, be creative"
               rows={5}
+              maxLength={140}
               value={formData.description}
               onChange={(description) => onChange({ description })}
             />
+            <div className="form-textarea-helper">
+              <span>
+                Max length is 140 characters
+              </span>
+
+              <span>
+                {formData.description.length}/140
+              </span>
+            </div>
           </FormField>
         </div>
       </div>
