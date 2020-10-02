@@ -6,7 +6,7 @@ const initialState: EventCreationFormModel = {
   description: '',
   category_id: null,
   paid_event: false,
-  event_fee: 0,
+  event_fee: null,
   reward: null,
   date: null,
   duration: null,

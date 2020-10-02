@@ -1,5 +1,6 @@
 import { Radio } from '@app/components/base/custom/Radio'
 import { Form } from '@app/components/base/Form'
+import { InputNumber } from '@app/components/base/InputNumber'
 import { InputText } from '@app/components/base/InputText'
 import { Textarea } from '@app/components/base/Textarea'
 import { CategorySelect } from '@app/components/event/CategorySelect'
@@ -59,15 +60,39 @@ const Component: FC<Props> = ({ formData, onChange, onSubmit }) => {
             />
           </FormField>
 
-          <FormField title={l10n.getText('field.paid_event')}>
+          <FormField>
             <div className="form-radio-holder">
               <Radio checked={!formData.paid_event} onChange={() => onChange({ paid_event: false })}>
                 {l10n.getText('field.paid_event.FREE_EVENT')}
               </Radio>
 
-              <Radio checked={formData.paid_event} onChange={() => onChange({ paid_event: true })}>
+              <Radio checked={formData.paid_event} onChange={() => onChange({ paid_event: true, event_fee: null })}>
                 {l10n.getText('field.paid_event.PAID_EVENT')}
               </Radio>
+            </div>
+          </FormField>
+
+          {formData.paid_event &&
+          <FormField title={l10n.getText('field.event_fee')} required>
+            <InputNumber className="form-input w-50"
+              placeholder={l10n.getText('field.event_fee.placeholder')}
+              value={formData.event_fee}
+              onChange={(event_fee) => onChange({ event_fee })}
+            />
+          </FormField>
+          }
+
+          <FormField title={l10n.getText('field.reward')}>
+            <div className="form-field-reward">
+              <InputNumber className="form-input"
+                placeholder={l10n.getText('field.reward.placeholder')}
+                value={formData.reward}
+                onChange={(reward) => onChange({ reward })}
+              />
+
+              <div className="reward-comment">
+                {l10n.getText('field.reward.helper')}
+              </div>
             </div>
           </FormField>
         </div>

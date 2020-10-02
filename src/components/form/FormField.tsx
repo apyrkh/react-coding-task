@@ -3,7 +3,7 @@ import React, { FC, ReactNode } from 'react'
 
 interface Props {
   required?: boolean
-  title: string
+  title?: string
   children: ReactNode
 }
 

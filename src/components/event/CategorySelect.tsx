@@ -10,8 +10,9 @@ interface Props extends Omit<SelectProps, 'options' | 'value' | 'onChange'> {
 
 const Component: FC<Props> = ({ value, onChange, className, ...props }) => {
   const { l10n } = useAppContext()
-  // @TODO get categories and transform them to options
-  const options: SelectOption[] = ['1', '2']
+  // @TODO where to get categories???
+  const categories = [{ id: 1, name: 'Category 1' }, { id: 2, name: 'Category 2' }]
+  const options: SelectOption[] = categories.map((it) => ({ label: it.name, value: `${it.id}` }))
 
   const noValue = l10n.getText('field.category.placeholder')
   const handleChange = (value: string) => onChange(value ? +value : null)
