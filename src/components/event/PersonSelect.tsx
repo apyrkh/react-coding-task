@@ -1,5 +1,5 @@
 import { Select, SelectOption, SelectProps } from '@app/components/base/Select'
-import PersonDto from '@app/interfaces/PersonDto'
+import PersonDto from '@app/interfaces/dto/PersonDto'
 import { initPersons } from '@app/redux/actions/personSelectAction'
 import RootState from '@app/redux/interfaces/RootState'
 import classNames from 'classnames'

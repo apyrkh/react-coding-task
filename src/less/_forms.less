@@ -1,25 +1,38 @@
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: @form-input-placeholder-color;
-  opacity: 1; /* Firefox */
-}
+@placeholder-color: @light-grey;
 
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
-  color: @form-input-placeholder-color;
-}
+input {
+  &::placeholder {
+    color: @placeholder-color;
+    opacity: 1;
+  }
 
-::-ms-input-placeholder { /* Microsoft Edge */
-  color: @form-input-placeholder-color;
+  &::-webkit-calendar-picker-indicator {
+    opacity: 0.4;
+    .with-out-transition(~"opacity")
+  }
+
+  &:hover, &:focus {
+    &::-webkit-calendar-picker-indicator {
+      opacity: 1;
+      .with-out-transition(~"opacity")
+    }
+  }
 }
 
 select.with-placeholder {
   &:not(:focus):not(:active) {
-    color: @form-input-placeholder-color
+    color: @placeholder-color
   }
 }
 
 textarea {
   resize: vertical;
   min-height: 60px;
+
+  &::placeholder {
+    color: @placeholder-color;
+    opacity: 1;
+  }
 }
 
 
@@ -33,7 +46,7 @@ textarea {
     &::after {
       content: '*';
       position: absolute;
-      top: 0;
+      top: 7px;
       right: -10px;
     }
   }
@@ -43,7 +56,6 @@ textarea {
 @form-input-border-color: @light-grey;
 @form-input-border-color-active: @blue;
 @form-input-border-radius: @border-radius;
-@form-input-placeholder-color: @light-grey;
 @form-input-disabled-bg: rgba(@light-grey, 0.2);
 
 .form-input {

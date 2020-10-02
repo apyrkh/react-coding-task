@@ -2,8 +2,8 @@ import { InputEmail } from '@app/components/base/InputEmail'
 import { PersonSelect } from '@app/components/event/PersonSelect'
 import { FormField } from '@app/components/form/FormField'
 import { useAppContext } from '@app/hooks/useAppContext'
+import PersonDto from '@app/interfaces/dto/PersonDto'
 import EventCreationFormModel from '@app/interfaces/EventCreationFormModel'
-import PersonDto from '@app/interfaces/PersonDto'
 import React, { FC } from 'react'
 
 interface Props {
@@ -16,7 +16,7 @@ const Component: FC<Props> = ({ formData, onChange }) => {
   const handleChangePerson = (person: PersonDto | null) => {
     onChange({
       ...formData,
-      coordinator: person ? { id: `${person.id}`, email: person.email } : null
+      coordinator: person ? { id: person.id, email: person.email } : null
     })
   }
 
@@ -25,7 +25,7 @@ const Component: FC<Props> = ({ formData, onChange }) => {
       <FormField title={l10n.getText('field.responsible')} required>
         <PersonSelect className="form-input"
           placeholder={l10n.getText('field.responsible.placeholder')}
-          personId={formData.coordinator ? +formData.coordinator.id : null}
+          personId={formData.coordinator ? formData.coordinator.id : null}
           onChange={handleChangePerson}
         />
       </FormField>

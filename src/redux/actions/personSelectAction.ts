@@ -1,4 +1,4 @@
-import PersonDto from '@app/interfaces/PersonDto'
+import PersonDto from '@app/interfaces/dto/PersonDto'
 import ExtraArguments from '@app/redux/interfaces/ExtraArguments'
 import RootState from '@app/redux/interfaces/RootState'
 import { Action } from 'redux'

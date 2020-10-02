@@ -4,7 +4,8 @@
   }
 
   .event-creation-form {
-    .form-field-reward {
+    .form-field_reward,
+    .form-field_duration {
       display: flex;
       align-items: center;
 
@@ -18,6 +19,28 @@
         padding-left: 10px;
         color: @dark-grey;
         font-size: 12px;
+      }
+    }
+
+    .form-field_starts-on {
+      display: flex;
+      flex-direction: column;
+
+      @media (min-width: @screen-xs) {
+        align-items: center;
+        flex-direction: row;
+
+        .starts-on_date {
+          width: 50%;
+        }
+
+        .starts-on_time {
+          width: auto;
+        }
+      }
+
+      .starts-on_at {
+        margin: 10px;
       }
     }
 

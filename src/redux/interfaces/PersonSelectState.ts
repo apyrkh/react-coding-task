@@ -1,4 +1,4 @@
-import PersonDto from '@app/interfaces/PersonDto'
+import PersonDto from '@app/interfaces/dto/PersonDto'
 
 export default interface PersonSelectState {
   isInitialized: boolean

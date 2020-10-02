@@ -76,9 +76,10 @@ const Component: FC<Props> = ({ formData, onChange }) => {
       }
 
       <FormField title={l10n.getText('field.reward')}>
-        <div className="form-field-reward">
+        <div className="form-field_reward">
           <InputNumber className="form-input"
             placeholder={l10n.getText('field.reward.placeholder')}
+            min={0} step={1}
             value={formData.reward}
             onChange={(reward) => onChange({ reward })}
           />

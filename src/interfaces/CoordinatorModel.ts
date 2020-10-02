@@ -1,4 +1,4 @@
 export default interface CoordinatorModel {
-  id: string
+  id: number
   email: string
 }

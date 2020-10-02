@@ -1,4 +1,4 @@
-import CategoryDto from '@app/interfaces/CategoryDto'
+import CategoryDto from '@app/interfaces/dto/CategoryDto'
 import ExtraArguments from '@app/redux/interfaces/ExtraArguments'
 import RootState from '@app/redux/interfaces/RootState'
 import { Action } from 'redux'

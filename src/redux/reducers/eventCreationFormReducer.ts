@@ -8,9 +8,10 @@ const initialState: EventCreationFormModel = {
   paid_event: false,
   event_fee: null,
   reward: null,
-  date: null,
-  duration: null,
-  coordinator: null
+  coordinator: null,
+  starts_on_date: '',
+  starts_on_time: '',
+  duration: null
 }
 
 type ReducerType = (state: EventCreationFormModel | undefined, action: EventCreationFormAction) => EventCreationFormModel

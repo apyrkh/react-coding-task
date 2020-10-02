@@ -1,5 +1,5 @@
 import { Select, SelectOption, SelectProps } from '@app/components/base/Select'
-import CategoryDto from '@app/interfaces/CategoryDto'
+import CategoryDto from '@app/interfaces/dto/CategoryDto'
 import { initCategories } from '@app/redux/actions/categorySelectAction'
 import RootState from '@app/redux/interfaces/RootState'
 import classNames from 'classnames'
