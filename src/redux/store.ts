@@ -1,5 +1,5 @@
+import ExtraArguments from '@app/redux/interfaces/ExtraArguments'
 import reducers from '@app/redux/reducers'
-import { ExtraArguments } from '@app/redux/StoreInterfaces'
 import { applyMiddleware, createStore } from 'redux'
 import loggerMiddleware from 'redux-logger'
 import thunkMiddleware from 'redux-thunk'

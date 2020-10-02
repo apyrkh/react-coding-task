@@ -49,7 +49,7 @@ const Component: FC<Props> = ({ formData, onChange }) => {
         <CategorySelect className="form-input"
           placeholder={l10n.getText('field.category.placeholder')}
           categoryId={formData.category_id}
-          onChange={(category_id) => onChange({ category_id })}
+          onChange={(category) => onChange({ category_id: category ? category.id : null })}
         />
       </FormField>
 

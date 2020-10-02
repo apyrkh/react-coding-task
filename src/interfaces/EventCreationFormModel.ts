@@ -1,4 +1,4 @@
-import Coordinator from '@app/interfaces/Coordinator'
+import CoordinatorModel from '@app/interfaces/CoordinatorModel'
 
 export const DESCRIPTION_MAX_LENGTH = 140
 
@@ -11,5 +11,5 @@ export default interface EventCreationFormModel {
   reward: number | null
   date: string | null // YYYY-MM-DDTHH:mm (example: 2018-01-19T15:15)
   duration: number | null // in seconds
-  coordinator: Coordinator | null
+  coordinator: CoordinatorModel | null
 }

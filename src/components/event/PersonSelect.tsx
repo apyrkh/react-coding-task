@@ -1,7 +1,7 @@
 import { Select, SelectOption, SelectProps } from '@app/components/base/Select'
 import PersonDto from '@app/interfaces/PersonDto'
 import { initPersons } from '@app/redux/actions/personSelectAction'
-import { RootState } from '@app/redux/StoreInterfaces'
+import RootState from '@app/redux/interfaces/RootState'
 import classNames from 'classnames'
 import React, { FC, useEffect, useMemo } from 'react'
 import { connect } from 'react-redux'

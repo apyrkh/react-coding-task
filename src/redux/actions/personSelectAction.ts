@@ -1,5 +1,6 @@
 import PersonDto from '@app/interfaces/PersonDto'
-import { ExtraArguments, RootState } from '@app/redux/StoreInterfaces'
+import ExtraArguments from '@app/redux/interfaces/ExtraArguments'
+import RootState from '@app/redux/interfaces/RootState'
 import { Action } from 'redux'
 import { ThunkAction } from 'redux-thunk'
 

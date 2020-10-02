@@ -1,13 +1,13 @@
-import PersonSelectModel from '@app/interfaces/PersonSelectModel'
 import { PersonSelectAction, PersonSelectActionTypes } from '@app/redux/actions/personSelectAction'
+import PersonSelectState from '@app/redux/interfaces/PersonSelectState'
 
-const initialState: PersonSelectModel = {
+const initialState: PersonSelectState = {
   isInitialized: false,
   isLoading: false,
   persons: []
 }
 
-type ReducerType = (state: PersonSelectModel | undefined, action: PersonSelectAction) => PersonSelectModel
+type ReducerType = (state: PersonSelectState | undefined, action: PersonSelectAction) => PersonSelectState
 
 export const personSelectReducer: ReducerType = (state = initialState, action) => {
   switch (action.type) {
