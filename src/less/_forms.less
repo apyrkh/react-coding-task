@@ -67,6 +67,10 @@ textarea {
   &:focus {
     border-color: @form-input-border-color-active;
     .with-in-transition(~"border-color");
+
+    &[readonly] {
+      border-color: rgba(@form-input-border-color-active, 0.4);
+    }
   }
 }
 
