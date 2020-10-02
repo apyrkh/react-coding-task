@@ -1,3 +1,4 @@
+import { Api } from '@app/api/Api'
 import { AppRoutes } from '@app/AppRoutes'
 import { AppContextProvider } from '@app/components/AppContextProvider'
 import { configureStore } from '@app/redux/store'
@@ -6,7 +7,8 @@ import { Provider } from 'react-redux'
 import './less/index.less'
 
 const Component = () => {
-  const store = configureStore()
+  const api = new Api()
+  const store = configureStore({ api })
 
   return (
     <Provider store={store}>

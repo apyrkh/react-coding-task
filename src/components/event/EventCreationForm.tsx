@@ -1,5 +1,6 @@
 import { Form } from '@app/components/base/Form'
-import { EventCreationFormFragmentAbout } from '@app/components/event/EventCreationFormFragmentAbout'
+import { FormFragmentAbout } from '@app/components/event/FormFragmentAbout'
+import { FormFragmentCoordinator } from '@app/components/event/FormFragmentCoordinator'
 import { useAppContext } from '@app/hooks/useAppContext'
 import EventCreationFormModel from '@app/interfaces/EventCreationFormModel'
 import React, { FC } from 'react'
@@ -21,13 +22,17 @@ const Component: FC<Props> = ({ formData, onChange, onSubmit }) => {
         </div>
 
         <div className="panel__body">
-          <EventCreationFormFragmentAbout formData={formData} onChange={onChange} />
+          <FormFragmentAbout formData={formData} onChange={onChange} />
         </div>
       </div>
 
       <div className="panel">
         <div className="panel__head">
           {l10n.getText('label.coordinator')}
+        </div>
+
+        <div className="panel__body">
+          <FormFragmentCoordinator formData={formData} onChange={onChange} />
         </div>
       </div>
 

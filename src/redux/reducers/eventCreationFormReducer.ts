@@ -13,7 +13,9 @@ const initialState: EventCreationFormModel = {
   coordinator: null
 }
 
-export const eventCreationFormReducer = (state: EventCreationFormModel = initialState, action: EventCreationFormAction): EventCreationFormModel => {
+type ReducerType = (state: EventCreationFormModel | undefined, action: EventCreationFormAction) => EventCreationFormModel
+
+export const eventCreationFormReducer: ReducerType = (state = initialState, action) => {
   switch (action.type) {
     case EventCreationFormActionTypes.CHANGE: {
       return { ...state, ...action.formData }

@@ -47,7 +47,8 @@ const Component: FC<Props> = ({ formData, onChange }) => {
 
       <FormField title={l10n.getText('field.category')}>
         <CategorySelect className="form-input"
-          value={formData.category_id}
+          placeholder={l10n.getText('field.category.placeholder')}
+          categoryId={formData.category_id}
           onChange={(category_id) => onChange({ category_id })}
         />
       </FormField>
@@ -91,4 +92,4 @@ const Component: FC<Props> = ({ formData, onChange }) => {
   )
 }
 
-export const EventCreationFormFragmentAbout = React.memo(Component)
+export const FormFragmentAbout = React.memo(Component)

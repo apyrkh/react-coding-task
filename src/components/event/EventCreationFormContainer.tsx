@@ -1,12 +1,12 @@
 import { EventCreationForm } from '@app/components/event/EventCreationForm'
 import EventCreationFormModel from '@app/interfaces/EventCreationFormModel'
-import GlobalState from '@app/interfaces/GlobalState'
 import { changeEventCreationForm } from '@app/redux/actions/eventCreationFormAction'
+import { RootState } from '@app/redux/StoreInterfaces'
 import React from 'react'
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
 
-const mapStateToProps = (state: GlobalState) => ({
+const mapStateToProps = (state: RootState) => ({
   formData: state.eventCreationForm
 })
 

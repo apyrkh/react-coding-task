@@ -11,8 +11,8 @@ const Component = React.forwardRef<HTMLInputElement, Props>(({ onChange, ...prop
   const handleChange = onChange ? (e: ChangeEvent<HTMLInputElement>): void => onChange(e.target.value) : undefined
 
   return (
-    <input ref={ref} {...props} onChange={handleChange} type="text" />
+    <input ref={ref} {...props} onChange={handleChange} type="email" />
   )
 })
 
-export const InputText = React.memo(Component)
+export const InputEmail = React.memo(Component)

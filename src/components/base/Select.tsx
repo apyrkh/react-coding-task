@@ -7,12 +7,12 @@ export const getSelectOptionLabel = (opt: SelectOption): string => typeof opt ==
 export interface SelectProps extends Omit<InputHTMLAttributes<HTMLSelectElement>, 'multiple' | 'value' | 'onChange'> {
   options: SelectOption[]
   noValue?: string
-  value: string
-  onChange: (value: string) => void
+  value?: string
+  onChange?: (value: string) => void
 }
 
-const Component: FC<SelectProps> = React.forwardRef<HTMLSelectElement, SelectProps>(({ options, noValue, onChange, ...props }, ref) => {
-  const handleChange = (e: ChangeEvent<HTMLSelectElement>): void => onChange(e.target.value)
+const Component = React.forwardRef<HTMLSelectElement, SelectProps>(({ options, noValue, onChange, ...props }, ref) => {
+  const handleChange = onChange ? (e: ChangeEvent<HTMLSelectElement>): void => onChange(e.target.value) : undefined
 
   return (
     <select ref={ref} {...props} onChange={handleChange}>

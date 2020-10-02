@@ -1,9 +1,6 @@
-export const DESCRIPTION_MAX_LENGTH = 140
+import Coordinator from '@app/interfaces/Coordinator'
 
-interface Coordinator {
-  id: string
-  email: string
-}
+export const DESCRIPTION_MAX_LENGTH = 140
 
 export default interface EventCreationFormModel {
   title: string
