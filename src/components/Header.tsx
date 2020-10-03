@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 
 interface Props {
-  title: string
+  title?: string
 }
 
 const Component: FC<Props> = ({ title }) => {
