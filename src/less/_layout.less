@@ -1,0 +1,35 @@
+@header-bg: @blue;
+@header-color: @white;
+@header-top-line-bg: @dark-blue;
+
+.page {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-height: 100vh;
+}
+
+.header {
+  font-size: 32px;
+  color: @header-color;
+  background-color: @header-bg;
+  box-shadow: 0px 0px 4px @header-top-line-bg;
+
+  &__top-line {
+    height: 10px;
+    background-color: @header-top-line-bg;
+  }
+
+  &__main-line {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    padding-left: 30px;
+  }
+}
+
+@main-bg: #EFEFEF;
+
+.main {
+  padding: 30px 0;
+  background: @main-bg;
+}

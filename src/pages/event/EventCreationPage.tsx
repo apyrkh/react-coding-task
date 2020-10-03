@@ -1,6 +1,7 @@
 import { EventCreationFormContainer } from '@app/components/event/EventCreationFormContainer'
+import { useAppContext } from '@app/hooks/useAppContext'
 import EventCreationFormModel from '@app/interfaces/EventCreationFormModel'
-import { EventCreationHeader } from '@app/pages/event/EventCreationHeader'
+import { Header } from '@app/components/Header'
 import React, { FC } from 'react'
 
 interface Props {
@@ -9,13 +10,17 @@ interface Props {
 }
 
 const Component: FC = () => {
-  return (
-    <div className="event-creation-page">
-      <EventCreationHeader />
+  const { l10n } = useAppContext()
 
-      <div className="container">
-        <EventCreationFormContainer />
-      </div>
+  return (
+    <div className="page event-creation-page">
+      <Header title={l10n.getText('header.new_event')} />
+
+      <main className="main">
+        <div className="container">
+          <EventCreationFormContainer />
+        </div>
+      </main>
     </div>
   )
 }
