@@ -5,6 +5,7 @@ import { FormField } from '@app/components/form/FormField'
 import { useAppContext } from '@app/hooks/useAppContext'
 import { useOnChangeHandler } from '@app/hooks/useOnChangeHandler'
 import EventCreationFormModel from '@app/interfaces/EventCreationFormModel'
+import classNames from 'classnames'
 import React, { Dispatch, FC, SetStateAction } from 'react'
 
 interface Props {
@@ -22,7 +23,7 @@ const Component: FC<Props> = ({ formData, onChange }) => {
         error={formData.errors.starts_on_date || formData.errors.starts_on_time}
       >
         <div className="form-field_starts-on">
-          <InputDate className="form-input starts-on_date"
+          <InputDate className={classNames('form-input starts-on_date', { 'form-input__has-error': !!formData.errors.starts_on_date })}
             value={formData.starts_on_date}
             onChange={getOnChangeHandler('starts_on_date')}
           />
@@ -31,7 +32,7 @@ const Component: FC<Props> = ({ formData, onChange }) => {
             {l10n.getText('field.starts_on.at')}
           </div>
 
-          <InputTime className="form-input starts-on_time"
+          <InputTime className={classNames('form-input starts-on_time', { 'form-input__has-error': !!formData.errors.starts_on_time })}
             value={formData.starts_on_time}
             onChange={getOnChangeHandler('starts_on_time')}
           />

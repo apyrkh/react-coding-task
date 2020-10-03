@@ -5,6 +5,7 @@ import { useAppContext } from '@app/hooks/useAppContext'
 import { useOnChangeHandler } from '@app/hooks/useOnChangeHandler'
 import PersonDto from '@app/interfaces/dto/PersonDto'
 import EventCreationFormModel from '@app/interfaces/EventCreationFormModel'
+import classNames from 'classnames'
 import React, { Dispatch, FC, SetStateAction } from 'react'
 
 interface Props {
@@ -24,7 +25,7 @@ const Component: FC<Props> = ({ formData, onChange }) => {
       <FormField title={l10n.getText('field.responsible')} required
         error={formData.errors.coordinator}
       >
-        <PersonSelect className="form-input"
+        <PersonSelect className={classNames('form-input', { 'form-input__has-error': !!formData.errors.coordinator })}
           placeholder={l10n.getText('field.responsible.placeholder')}
           personId={formData.coordinator ? formData.coordinator.id : null}
           onChange={handleChangePerson}

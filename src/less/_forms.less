@@ -70,6 +70,7 @@ textarea {
 
 @form-input-border-color: @light-grey;
 @form-input-border-color-active: @blue;
+@form-input-border-color-error: @danger;
 @form-input-border-radius: @border-radius;
 @form-input-disabled-bg: rgba(@light-grey, 0.2);
 
@@ -98,6 +99,11 @@ textarea {
     &[readonly] {
       border-color: rgba(@form-input-border-color-active, 0.4);
     }
+  }
+
+  &__has-error {
+    border-color: @form-input-border-color-error !important;
+    .with-in-transition(~"border-color");
   }
 }
 
@@ -150,24 +156,13 @@ textarea {
   }
 
   &__error {
-    width: 30%;
+    width: 100%;
+    padding-left: 0;
     word-break: break-all;
 
-    .form-error {
-      margin-left: 0;
-
-      @media (min-width: @screen-md) {
-        margin-left: 15px;
-
-        &::before {
-          content: "";
-          border-style: solid;
-          border-width: 7px 10px 7px 0;
-          border-color: rgba(0, 0, 0, 0) @form-error-bg rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
-          position: absolute;
-          left: -7px;
-        }
-      }
+    @media (min-width: @screen-md) {
+      width: 30%;
+      padding-left: 15px;
     }
   }
 }

@@ -7,6 +7,7 @@ import { FormField } from '@app/components/form/FormField'
 import { useAppContext } from '@app/hooks/useAppContext'
 import { useOnChangeHandler } from '@app/hooks/useOnChangeHandler'
 import EventCreationFormModel, { DESCRIPTION_MAX_LENGTH } from '@app/interfaces/EventCreationFormModel'
+import classNames from 'classnames'
 import React, { Dispatch, FC, SetStateAction } from 'react'
 
 interface Props {
@@ -17,15 +18,17 @@ interface Props {
 const Component: FC<Props> = ({ formData, onChange }) => {
   const { l10n } = useAppContext()
   const getOnChangeHandler = useOnChangeHandler<EventCreationFormModel>(onChange)
-  const handleFreeEvent = () => onChange((prev) => ({ ...prev, paid_event: false }))
-  const handlePaidEvent = () => onChange((prev) => ({ ...prev, paid_event: true, event_fee: null }))
+  const handleFreeEvent = () => {
+    onChange((prev) => ({ ...prev, paid_event: false, event_fee: null, errors: { ...prev.errors, event_fee: undefined } }))
+  }
+  const handlePaidEvent = () => getOnChangeHandler('paid_event')(true)
 
   return (
     <>
       <FormField title={l10n.getText('field.title')} required
         error={formData.errors.title}
       >
-        <InputText className="form-input"
+        <InputText className={classNames('form-input', { 'form-input__has-error': !!formData.errors.title })}
           placeholder={l10n.getText('field.title.placeholder')}
           value={formData.title}
           onChange={getOnChangeHandler('title')}
@@ -35,7 +38,7 @@ const Component: FC<Props> = ({ formData, onChange }) => {
       <FormField title={l10n.getText('field.description')} required
         error={formData.errors.description}
       >
-        <Textarea className="form-input"
+        <Textarea className={classNames('form-input', { 'form-input__has-error': !!formData.errors.description })}
           placeholder={l10n.getText('field.description.placeholder')}
           rows={5}
           maxLength={DESCRIPTION_MAX_LENGTH}
@@ -77,7 +80,7 @@ const Component: FC<Props> = ({ formData, onChange }) => {
       <FormField title={l10n.getText('field.event_fee')} required
         error={formData.errors.event_fee}
       >
-        <InputNumber className="form-input w-50"
+        <InputNumber className={classNames('form-input w-50', { 'form-input__has-error': !!formData.errors.event_fee })}
           placeholder={l10n.getText('field.event_fee.placeholder')}
           value={formData.event_fee}
           onChange={getOnChangeHandler('event_fee')}
