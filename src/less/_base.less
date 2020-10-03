@@ -37,6 +37,9 @@ body {
 @panel-head-font-size: 24px;
 @panel-head-font-weight: bold;
 
+@panel-success-color: #43a047;
+@panel-success-bg: rgba(@panel-success-color, 0.1);
+
 .panel {
   padding: 10px 40px;
   box-shadow: 0px 0px 4px @dark-grey;
@@ -55,6 +58,15 @@ body {
 
   &__body {
     padding: 10px 0;
+  }
+
+  &.panel-success {
+    background-color: @panel-success-bg;
+
+    .panel__head {
+      color: @panel-success-color;
+      border-bottom: none;
+    }
   }
 }
 

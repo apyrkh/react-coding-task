@@ -28,5 +28,8 @@
 
   "label.about": "About",
   "label.coordinator": "Coordinator",
-  "label.when": "When"
+  "label.success": "Success",
+  "label.when": "When",
+
+  "text.event_has_been_created": "Event has been created"
 }
