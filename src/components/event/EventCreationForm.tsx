@@ -4,11 +4,11 @@ import { FormFragmentCoordinator } from '@app/components/event/FormFragmentCoord
 import { FormFragmentWhen } from '@app/components/event/FormFragmentWhen'
 import { useAppContext } from '@app/hooks/useAppContext'
 import EventCreationFormModel from '@app/interfaces/EventCreationFormModel'
-import React, { FC } from 'react'
+import React, { Dispatch, FC, SetStateAction } from 'react'
 
 interface Props {
   formData: EventCreationFormModel
-  onChange: (formData: Partial<EventCreationFormModel>) => void
+  onChange: Dispatch<SetStateAction<EventCreationFormModel>>
   onSubmit?: () => void
 }
 

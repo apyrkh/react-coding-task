@@ -1,16 +1,16 @@
-import { EventCreationFormContainer } from '@app/components/event/EventCreationFormContainer'
-import { useAppContext } from '@app/hooks/useAppContext'
-import EventCreationFormModel from '@app/interfaces/EventCreationFormModel'
+import { EventCreationForm } from '@app/components/event/EventCreationForm'
 import { Header } from '@app/components/Header'
-import React, { FC } from 'react'
-
-interface Props {
-  formData: EventCreationFormModel
-  onChange: (formData: Partial<EventCreationFormModel>) => void
-}
+import { useAppContext } from '@app/hooks/useAppContext'
+import { INITIAL_EVENT_CREATION_STATE } from '@app/interfaces/EventCreationFormModel'
+import React, { FC, useState } from 'react'
 
 const Component: FC = () => {
   const { l10n } = useAppContext()
+
+  const [formData, setFormData] = useState(INITIAL_EVENT_CREATION_STATE)
+  const handleSubmit = async (): Promise<void> => {
+    console.log(formData)
+  }
 
   return (
     <div className="page event-creation-page">
@@ -18,7 +18,7 @@ const Component: FC = () => {
 
       <main className="main">
         <div className="container">
-          <EventCreationFormContainer />
+          <EventCreationForm formData={formData} onChange={setFormData} onSubmit={handleSubmit} />
         </div>
       </main>
     </div>

@@ -4,20 +4,17 @@ import { FormField } from '@app/components/form/FormField'
 import { useAppContext } from '@app/hooks/useAppContext'
 import PersonDto from '@app/interfaces/dto/PersonDto'
 import EventCreationFormModel from '@app/interfaces/EventCreationFormModel'
-import React, { FC } from 'react'
+import React, { Dispatch, FC, SetStateAction } from 'react'
 
 interface Props {
   formData: EventCreationFormModel
-  onChange: (formData: Partial<EventCreationFormModel>) => void
+  onChange: Dispatch<SetStateAction<EventCreationFormModel>>
 }
 
 const Component: FC<Props> = ({ formData, onChange }) => {
   const { l10n } = useAppContext()
   const handleChangePerson = (person: PersonDto | null) => {
-    onChange({
-      ...formData,
-      coordinator: person ? { id: person.id, email: person.email } : null
-    })
+    onChange((prev) => ({ ...prev, coordinator: person ? { id: person.id, email: person.email } : null }))
   }
 
   return (

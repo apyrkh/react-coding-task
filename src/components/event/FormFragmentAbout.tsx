@@ -5,16 +5,20 @@ import { Textarea } from '@app/components/base/Textarea'
 import { CategorySelect } from '@app/components/event/CategorySelect'
 import { FormField } from '@app/components/form/FormField'
 import { useAppContext } from '@app/hooks/useAppContext'
+import { useOnChangeHandler } from '@app/hooks/useOnChangeHandler'
 import EventCreationFormModel, { DESCRIPTION_MAX_LENGTH } from '@app/interfaces/EventCreationFormModel'
-import React, { FC } from 'react'
+import React, { Dispatch, FC, SetStateAction } from 'react'
 
 interface Props {
   formData: EventCreationFormModel
-  onChange: (formData: Partial<EventCreationFormModel>) => void
+  onChange: Dispatch<SetStateAction<EventCreationFormModel>>
 }
 
 const Component: FC<Props> = ({ formData, onChange }) => {
   const { l10n } = useAppContext()
+  const getOnChangeHandler = useOnChangeHandler<EventCreationFormModel>(onChange)
+  const handleFreeEvent = () => onChange((prev) => ({ ...prev, paid_event: false }))
+  const handlePaidEvent = () => onChange((prev) => ({ ...prev, paid_event: true, event_fee: null }))
 
   return (
     <>
@@ -22,7 +26,7 @@ const Component: FC<Props> = ({ formData, onChange }) => {
         <InputText className="form-input"
           placeholder={l10n.getText('field.title.placeholder')}
           value={formData.title}
-          onChange={(title) => onChange({ title })}
+          onChange={getOnChangeHandler('title')}
         />
       </FormField>
 
@@ -32,7 +36,7 @@ const Component: FC<Props> = ({ formData, onChange }) => {
           rows={5}
           maxLength={DESCRIPTION_MAX_LENGTH}
           value={formData.description}
-          onChange={(description) => onChange({ description })}
+          onChange={getOnChangeHandler('description')}
         />
         <div className="form-textarea-helper">
           <span>
@@ -49,17 +53,17 @@ const Component: FC<Props> = ({ formData, onChange }) => {
         <CategorySelect className="form-input"
           placeholder={l10n.getText('field.category.placeholder')}
           categoryId={formData.category_id}
-          onChange={(category) => onChange({ category_id: category ? category.id : null })}
+          onChange={(category) => onChange((prev) => ({ ...prev, category_id: category ? category.id : null }))}
         />
       </FormField>
 
       <FormField>
         <div className="form-radio-holder">
-          <Radio checked={!formData.paid_event} onChange={() => onChange({ paid_event: false })}>
+          <Radio checked={!formData.paid_event} onChange={handleFreeEvent}>
             {l10n.getText('field.paid_event.FREE_EVENT')}
           </Radio>
 
-          <Radio checked={formData.paid_event} onChange={() => onChange({ paid_event: true, event_fee: null })}>
+          <Radio checked={formData.paid_event} onChange={handlePaidEvent}>
             {l10n.getText('field.paid_event.PAID_EVENT')}
           </Radio>
         </div>
@@ -70,7 +74,7 @@ const Component: FC<Props> = ({ formData, onChange }) => {
         <InputNumber className="form-input w-50"
           placeholder={l10n.getText('field.event_fee.placeholder')}
           value={formData.event_fee}
-          onChange={(event_fee) => onChange({ event_fee })}
+          onChange={getOnChangeHandler('event_fee')}
         />
       </FormField>
       }
@@ -81,7 +85,7 @@ const Component: FC<Props> = ({ formData, onChange }) => {
             placeholder={l10n.getText('field.reward.placeholder')}
             min={0} step={1}
             value={formData.reward}
-            onChange={(reward) => onChange({ reward })}
+            onChange={getOnChangeHandler('reward')}
           />
 
           <div className="reward-comment">

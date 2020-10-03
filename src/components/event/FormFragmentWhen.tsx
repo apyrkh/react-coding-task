@@ -3,16 +3,18 @@ import { InputNumber } from '@app/components/base/InputNumber'
 import { InputTime } from '@app/components/base/InputTime'
 import { FormField } from '@app/components/form/FormField'
 import { useAppContext } from '@app/hooks/useAppContext'
+import { useOnChangeHandler } from '@app/hooks/useOnChangeHandler'
 import EventCreationFormModel from '@app/interfaces/EventCreationFormModel'
-import React, { FC } from 'react'
+import React, { Dispatch, FC, SetStateAction } from 'react'
 
 interface Props {
   formData: EventCreationFormModel
-  onChange: (formData: Partial<EventCreationFormModel>) => void
+  onChange: Dispatch<SetStateAction<EventCreationFormModel>>
 }
 
 const Component: FC<Props> = ({ formData, onChange }) => {
   const { l10n } = useAppContext()
+  const getOnChangeHandler = useOnChangeHandler<EventCreationFormModel>(onChange)
 
   return (
     <>
@@ -20,7 +22,7 @@ const Component: FC<Props> = ({ formData, onChange }) => {
         <div className="form-field_starts-on">
           <InputDate className="form-input starts-on_date"
             value={formData.starts_on_date}
-            onChange={(starts_on_date) => onChange({ ...formData, starts_on_date })}
+            onChange={getOnChangeHandler('starts_on_date')}
           />
 
           <div className="starts-on_at">
@@ -29,7 +31,7 @@ const Component: FC<Props> = ({ formData, onChange }) => {
 
           <InputTime className="form-input starts-on_time"
             value={formData.starts_on_time}
-            onChange={(starts_on_time) => onChange({ ...formData, starts_on_time })}
+            onChange={getOnChangeHandler('starts_on_time')}
           />
         </div>
       </FormField>
@@ -40,7 +42,7 @@ const Component: FC<Props> = ({ formData, onChange }) => {
             placeholder={l10n.getText('field.duration.placeholder')}
             min={0} step={0.5}
             value={formData.duration}
-            onChange={(duration) => onChange({ duration })}
+            onChange={getOnChangeHandler('duration')}
           />
 
           <div className="reward-comment">
