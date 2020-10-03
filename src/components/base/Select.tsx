@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC, InputHTMLAttributes } from 'react'
+import React, { ChangeEvent, InputHTMLAttributes } from 'react'
 
 export type SelectOption = string | { value: string, label?: string }
 export const getSelectOptionValue = (opt: SelectOption): string => typeof opt === 'object' ? opt.value : opt

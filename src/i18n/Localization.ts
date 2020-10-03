@@ -1,5 +1,6 @@
-export interface LocalizationTexts { [x: string]: string }
-export interface TextParams { [x: string]: any }
+export interface LocalizationTexts {[x: string]: string}
+
+export interface TextParams {[x: string]: any}
 
 export class Localization {
   public locale: string
