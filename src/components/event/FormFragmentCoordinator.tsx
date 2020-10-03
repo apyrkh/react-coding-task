@@ -2,6 +2,7 @@ import { InputEmail } from '@app/components/base/InputEmail'
 import { PersonSelect } from '@app/components/event/PersonSelect'
 import { FormField } from '@app/components/form/FormField'
 import { useAppContext } from '@app/hooks/useAppContext'
+import { useOnChangeHandler } from '@app/hooks/useOnChangeHandler'
 import PersonDto from '@app/interfaces/dto/PersonDto'
 import EventCreationFormModel from '@app/interfaces/EventCreationFormModel'
 import React, { Dispatch, FC, SetStateAction } from 'react'
@@ -13,13 +14,16 @@ interface Props {
 
 const Component: FC<Props> = ({ formData, onChange }) => {
   const { l10n } = useAppContext()
+  const getOnChangeHandler = useOnChangeHandler<EventCreationFormModel>(onChange)
   const handleChangePerson = (person: PersonDto | null) => {
-    onChange((prev) => ({ ...prev, coordinator: person ? { id: person.id, email: person.email } : null }))
+    getOnChangeHandler('coordinator')(person ? { id: person.id, email: person.email } : null)
   }
 
   return (
     <>
-      <FormField title={l10n.getText('field.responsible')} required>
+      <FormField title={l10n.getText('field.responsible')} required
+        error={formData.errors.coordinator}
+      >
         <PersonSelect className="form-input"
           placeholder={l10n.getText('field.responsible.placeholder')}
           personId={formData.coordinator ? formData.coordinator.id : null}

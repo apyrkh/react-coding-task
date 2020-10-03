@@ -52,6 +52,21 @@ textarea {
   }
 }
 
+@form-error-color: @white;
+@form-error-bg: @danger;
+@form-error-border-radius: @border-radius;
+
+.form-error {
+  font-size: 12px;
+  position: relative;
+  display: inline-block;
+  padding: 8px;
+  margin: 4px 0;
+  border-radius: @form-error-border-radius;
+  color: @form-error-color;
+  background-color: @form-error-bg;
+}
+
 
 @form-input-border-color: @light-grey;
 @form-input-border-color-active: @blue;
@@ -121,7 +136,7 @@ textarea {
 
     @media (min-width: @screen-md) {
       width: 20%;
-      margin-right: 10px;
+      padding-right: 10px;
       margin-bottom: 0;
     }
   }
@@ -131,6 +146,28 @@ textarea {
 
     @media (min-width: @screen-md) {
       width: 50%;
+    }
+  }
+
+  &__error {
+    width: 30%;
+    word-break: break-all;
+
+    .form-error {
+      margin-left: 0;
+
+      @media (min-width: @screen-md) {
+        margin-left: 15px;
+
+        &::before {
+          content: "";
+          border-style: solid;
+          border-width: 7px 10px 7px 0;
+          border-color: rgba(0, 0, 0, 0) @form-error-bg rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+          position: absolute;
+          left: -7px;
+        }
+      }
     }
   }
 }

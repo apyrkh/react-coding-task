@@ -18,7 +18,9 @@ const Component: FC<Props> = ({ formData, onChange }) => {
 
   return (
     <>
-      <FormField title={l10n.getText('field.starts_on')} required>
+      <FormField title={l10n.getText('field.starts_on')} required
+        error={formData.errors.starts_on_date || formData.errors.starts_on_time}
+      >
         <div className="form-field_starts-on">
           <InputDate className="form-input starts-on_date"
             value={formData.starts_on_date}

@@ -22,7 +22,9 @@ const Component: FC<Props> = ({ formData, onChange }) => {
 
   return (
     <>
-      <FormField title={l10n.getText('field.title')} required>
+      <FormField title={l10n.getText('field.title')} required
+        error={formData.errors.title}
+      >
         <InputText className="form-input"
           placeholder={l10n.getText('field.title.placeholder')}
           value={formData.title}
@@ -30,7 +32,9 @@ const Component: FC<Props> = ({ formData, onChange }) => {
         />
       </FormField>
 
-      <FormField title={l10n.getText('field.description')} required>
+      <FormField title={l10n.getText('field.description')} required
+        error={formData.errors.description}
+      >
         <Textarea className="form-input"
           placeholder={l10n.getText('field.description.placeholder')}
           rows={5}
@@ -70,7 +74,9 @@ const Component: FC<Props> = ({ formData, onChange }) => {
       </FormField>
 
       {formData.paid_event &&
-      <FormField title={l10n.getText('field.event_fee')} required>
+      <FormField title={l10n.getText('field.event_fee')} required
+        error={formData.errors.event_fee}
+      >
         <InputNumber className="form-input w-50"
           placeholder={l10n.getText('field.event_fee.placeholder')}
           value={formData.event_fee}

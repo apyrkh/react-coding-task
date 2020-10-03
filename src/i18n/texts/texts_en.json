@@ -1,6 +1,8 @@
 {
   "btn.publish_event": "Publish event",
 
+  "error.required": "Field is required",
+
   "field.category": "Category",
   "field.category.placeholder": "Select category",
   "field.description": "Description",
