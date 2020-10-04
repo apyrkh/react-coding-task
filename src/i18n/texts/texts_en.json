@@ -2,7 +2,7 @@
   "btn.create_event": "Create event",
   "btn.publish_event": "Publish event",
 
-  "error.required": "Field is required",
+  "error.code.required": "Field is required",
 
   "field.category": "Category",
   "field.category.placeholder": "Select category",
@@ -31,8 +31,10 @@
 
   "label.about": "About",
   "label.coordinator": "Coordinator",
+  "label.error": "Error",
   "label.success": "Success",
   "label.when": "When",
 
-  "text.event_has_been_created": "Event has been created"
+  "text.event_has_been_created": "Event has been created",
+  "text.something_went_wrong": "Something went wrong"
 }

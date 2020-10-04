@@ -40,6 +40,9 @@ body {
 @panel-success-color: @success;
 @panel-success-bg: rgba(@success, 0.1);
 
+@panel-danger-color: @danger;
+@panel-danger-bg: rgba(@danger, 0.1);
+
 .panel {
   padding: 10px 40px;
   box-shadow: 0px 0px 4px @dark-grey;
@@ -65,6 +68,15 @@ body {
 
     .panel__head {
       color: @panel-success-color;
+      border-bottom: none;
+    }
+  }
+
+  &.panel-danger {
+    background-color: @panel-danger-bg;
+
+    .panel__head {
+      color: @panel-danger-color;
       border-bottom: none;
     }
   }

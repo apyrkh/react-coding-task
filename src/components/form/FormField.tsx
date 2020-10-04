@@ -28,7 +28,7 @@ const Component: FC<Props> = ({ required, title, error, children }) => {
       {error &&
       <div className="form-field__error">
         <span className="form-error">
-          {l10n.getText(`error.${error.code}`, error.args)}
+          {l10n.getText(`error.code.${error.code}`, error.args)}
         </span>
       </div>}
     </div>

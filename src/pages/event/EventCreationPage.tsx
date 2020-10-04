@@ -1,3 +1,4 @@
+import ErrorBoundary from '@app/components/ErrorBoundary'
 import { EventCreationForm } from '@app/components/event/EventCreationForm'
 import { EventCreationSuccess } from '@app/components/event/EventCreationSuccess'
 import { Header } from '@app/components/Header'
@@ -33,7 +34,9 @@ const Component: FC = () => {
       <main className="main">
         <div className="container">
           {stage === 'CREATION' &&
-          <EventCreationForm formData={formData} onChange={setFormData} onSubmit={handleSubmit} />}
+          <ErrorBoundary>
+            <EventCreationForm formData={formData} onChange={setFormData} onSubmit={handleSubmit} />
+          </ErrorBoundary>}
 
           {stage === 'SUCCESS' &&
           <EventCreationSuccess />}
